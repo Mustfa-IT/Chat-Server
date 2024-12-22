@@ -1,0 +1,32 @@
+name: Chatting App
+services:
+  rabbit-mq :
+    image: rabbitmq:3.8.3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+        RABBITMQ_DEFAULT_USER: user
+        RABBITMQ_DEFAULT_PASS: password
+
+
+  postgresql:
+    image: postgres:16.2
+    ports:
+      - "5432:5432"
+
+    environment:
+        POSTGRES_USER: user
+        POSTGRES_PASSWORD: password
+        POSTGRES_DB: chatting_app
+
+
+  mongo-db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+
+    environment:
+        MONGO_INITDB_ROOT_USERNAME: user
+        MONGO_INITDB_ROOT_PASSWORD: password
+        MONGO_INITDB_DATABASE: chatting_app
